@@ -1,0 +1,7 @@
+interface:
+  display_name: "Exam Construction"
+  short_description: "Design, review, and analyze classroom exams, blueprints, rubrics, item banks, and post-exam item statistics."
+  brand_color: "#2E6FBB"
+  default_prompt: "Use the exam-construction skill to design or review the assessment materials requested by the user."
+policy:
+  allow_implicit_invocation: true

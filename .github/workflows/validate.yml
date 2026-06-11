@@ -1,0 +1,16 @@
+name: Validate skill package
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/validate_repo.py
+      - run: python skills/exam-construction/scripts/analyze_items.py --responses examples/item-analysis/responses.csv --key examples/item-analysis/answer_key.csv --out /tmp/item_analysis.csv

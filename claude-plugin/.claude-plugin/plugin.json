@@ -1,0 +1,7 @@
+{
+  "name": "exam-construction",
+  "description": "Higher-education classroom exam construction, item review, scoring-rubric design, and post-exam item analysis.",
+  "version": "0.2.0",
+  "license": "CC-BY-4.0",
+  "repository": "https://github.com/your-org/exam-construction-agent-skill"
+}
