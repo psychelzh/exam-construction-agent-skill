@@ -20,8 +20,7 @@ REQUIRED = [
     "claude-plugin/.claude-plugin/plugin.json",
     "claude-plugin/skills/exam-construction/SKILL.md",
     "README.md",
-    "install.sh",
-    "install.ps1",
+    "package.json",
 ]
 
 

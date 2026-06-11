@@ -26,82 +26,39 @@ exam-construction-agent-skill/
 │   └── skills/exam-construction/
 ├── examples/                       # Sample prompts and item-analysis CSVs
 ├── scripts/                        # Repo maintenance scripts
-├── install.sh                      # macOS/Linux installer
-├── install.ps1                     # Windows PowerShell installer
+├── package.json                    # npm/npx entrypoint and install metadata
 └── AGENTS.md                       # Repo-specific agent guidance
 ```
 
 ## Quick install
 
-### Codex / open Agent Skills location
+### npm / npx
 
-Install globally for Codex-compatible agents:
+This repository can be installed directly from GitHub with npm because it ships a small Node CLI entrypoint.
 
-```bash
-bash install.sh codex
-```
-
-This copies the skill to:
-
-```text
-$HOME/.agents/skills/exam-construction/
-```
-
-For a single project, run this from the target project root:
+Global install:
 
 ```bash
-bash install.sh repo-codex
+npm install -g github:psychelzh/exam-construction-agent-skill
+exam-construction-agent-skill codex
 ```
 
-This copies the skill to:
-
-```text
-.agents/skills/exam-construction/
-```
-
-### Claude Code personal skill
-
-Install as a personal Claude Code skill:
+One-off run without a global install:
 
 ```bash
-bash install.sh claude
+npx github:psychelzh/exam-construction-agent-skill claude
 ```
 
-This copies the skill to:
-
-```text
-$HOME/.claude/skills/exam-construction/
-```
-
-Then invoke it directly in Claude Code:
-
-```text
-/exam-construction
-```
-
-### Claude Code plugin wrapper
-
-Install as a local Claude Code plugin-style skill bundle:
+Local project install:
 
 ```bash
-bash install.sh claude-plugin
+npm install github:psychelzh/exam-construction-agent-skill
+npx exam-construction-agent-skill repo-codex
 ```
 
-This copies the plugin wrapper to:
+Available targets are: `codex`, `claude`, `both`, `repo-codex`, `repo-claude`, and `claude-plugin`.
 
-```text
-$HOME/.claude/skills/exam-construction-plugin/
-```
-
-After installation, restart Claude Code or run `/reload-plugins` if the session is already open.
-
-### Windows PowerShell
-
-```powershell
-./install.ps1 codex
-./install.ps1 claude
-./install.ps1 claude-plugin
-```
+The npm/npx command is now the supported installation path.
 
 ## Manual installation
 

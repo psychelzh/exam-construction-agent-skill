@@ -1,0 +1,33 @@
+{
+  "name": "exam-construction-agent-skill",
+  "version": "0.1.0",
+  "description": "A reusable Agent Skill for classroom exam construction and analysis.",
+  "license": "CC-BY-4.0",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "exam-construction-agent-skill": "./bin/exam-construction-agent-skill.js"
+  },
+  "files": [
+    "bin/exam-construction-agent-skill.js",
+    "skills/exam-construction/SKILL.md",
+    "skills/exam-construction/agents/*.yaml",
+    "skills/exam-construction/references/*.md",
+    "skills/exam-construction/scripts/*.py",
+    "claude-plugin/.claude-plugin/plugin.json",
+    "claude-plugin/skills/exam-construction/SKILL.md",
+    "claude-plugin/skills/exam-construction/agents/*.yaml",
+    "claude-plugin/skills/exam-construction/references/*.md",
+    "claude-plugin/skills/exam-construction/scripts/*.py",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "sync-plugin": "python scripts/sync_plugin.py",
+    "validate": "python scripts/validate_repo.py"
+  }
+}
