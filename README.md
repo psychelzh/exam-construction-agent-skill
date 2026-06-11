@@ -1,84 +1,25 @@
 # Exam Construction Agent Skill
 
-A reusable Agent Skill for higher-education and classroom exam construction. It helps an AI agent design, generate, review, revise, assemble, and analyze exams as measurement instruments rather than loose collections of questions.
+A reusable Agent Skill for classroom and higher-education exam construction. It helps an AI agent design, generate, review, revise, assemble, and analyze exams as measurement instruments.
 
-The skill is designed for tasks such as:
+## Install
 
-- creating a test blueprint / 双向细目表;
-- generating MCQs, short-answer items, essays, and case-analysis tasks;
-- reviewing distractors, answer uniqueness, difficulty, coverage, and fairness;
-- writing answer keys and analytic scoring rubrics;
-- building A/B parallel papers;
-- conducting simple post-exam objective-item analysis from CSV files.
-
-## Repository layout
-
-```text
-exam-construction-agent-skill/
-├── skills/
-│   └── exam-construction/          # Canonical Agent Skill folder
-│       ├── SKILL.md                # Main skill instructions
-│       ├── agents/openai.yaml      # Optional Codex metadata
-│       ├── references/             # Longer measurement and exam-design references
-│       └── scripts/                # Local helper scripts
-├── claude-plugin/                  # Claude Code plugin wrapper
-│   ├── .claude-plugin/plugin.json
-│   └── skills/exam-construction/
-├── examples/                       # Sample prompts and item-analysis CSVs
-├── scripts/                        # Repo maintenance scripts
-├── package.json                    # npm/npx entrypoint and install metadata
-└── AGENTS.md                       # Repo-specific agent guidance
-```
-
-## Quick install
-
-### npm / npx
-
-This repository can be installed directly from GitHub with npm because it ships a small Node CLI entrypoint.
-
-Global install:
+Install directly from GitHub with npm:
 
 ```bash
 npm install -g github:psychelzh/exam-construction-agent-skill
 exam-construction-agent-skill codex
 ```
 
-One-off run without a global install:
+Or run it once without a global install:
 
 ```bash
 npx github:psychelzh/exam-construction-agent-skill claude
 ```
 
-Local project install:
+Supported targets are: `codex`, `claude`, `both`, `repo-codex`, `repo-claude`, and `claude-plugin`.
 
-```bash
-npm install github:psychelzh/exam-construction-agent-skill
-npx exam-construction-agent-skill repo-codex
-```
-
-Available targets are: `codex`, `claude`, `both`, `repo-codex`, `repo-claude`, and `claude-plugin`.
-
-The npm/npx command is now the supported installation path.
-
-## Manual installation
-
-Copy `skills/exam-construction/` into one of these locations:
-
-```text
-# Codex-compatible user scope
-$HOME/.agents/skills/exam-construction/
-
-# Codex-compatible repo scope
-<repo>/.agents/skills/exam-construction/
-
-# Claude Code personal scope
-$HOME/.claude/skills/exam-construction/
-
-# Claude Code project scope
-<repo>/.claude/skills/exam-construction/
-```
-
-## Use examples
+## Use
 
 ```text
 Use the exam-construction skill. 根据这份课程大纲，为《发展心理学》期末闭卷考试设计双向细目表，100分，90分钟。
@@ -92,34 +33,13 @@ Use the exam-construction skill. 根据这份课程大纲，为《发展心理�
 $exam-construction Build an item bank from the attached lecture notes. Include item metadata, answer key, and difficulty estimates.
 ```
 
-## Item-analysis helper
+## Maintenance
 
-For objective items, prepare a response CSV and answer-key CSV.
-
-`responses.csv`:
-
-```csv
-respondent_id,Q1,Q2,Q3
-S001,A,B,C
-S002,A,C,C
-```
-
-`answer_key.csv`:
-
-```csv
-item_id,key
-Q1,A
-Q2,B
-Q3,C
-```
-
-Run:
+Validate the repository:
 
 ```bash
-python skills/exam-construction/scripts/analyze_items.py --responses examples/item-analysis/responses.csv --key examples/item-analysis/answer_key.csv --out item_analysis.csv
+python scripts/validate_repo.py
 ```
-
-## Development
 
 Synchronize the Claude plugin copy from the canonical skill folder:
 
@@ -127,18 +47,6 @@ Synchronize the Claude plugin copy from the canonical skill folder:
 python scripts/sync_plugin.py
 ```
 
-Validate repository structure:
+## Limits
 
-```bash
-python scripts/validate_repo.py
-```
-
-Create a distributable zip:
-
-```bash
-make package
-```
-
-## Important limits
-
-This skill is for classroom and higher-education course assessment. It should not be used as the sole basis for high-stakes licensing, admissions, employment selection, clinical diagnosis, or official psychometric instrument development. Formal or summative exams require human instructor review before administration.
+This skill is for classroom and higher-education assessment. It should not be used as the sole basis for high-stakes licensing, admissions, employment selection, clinical diagnosis, or official psychometric instrument development.
